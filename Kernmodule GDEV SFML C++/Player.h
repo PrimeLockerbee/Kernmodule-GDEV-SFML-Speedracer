@@ -27,9 +27,14 @@ class Player : public Character
 	
 		bool b_isInvincible;
 		Timer t_InvincibleTimer;
-	
+
+		sf::Texture t_Texture;
+		sf::Sprite s_Sprite;
+
 		//Private Methods
 		int GetPlayerInput();
 		void TickInvincabilityTimer();
+		void LoadTexture();
+		void InitializeSprite();
 };
 

@@ -9,6 +9,8 @@ Player::Player()
     i_lives = 3;
     i_horizontalInput = 0;
     t_InvincibleTimer = Timer(1.0f);
+    LoadTexture();
+    InitializeSprite();
 }
 
 Player::Player(Vector2 playerSize, sf::Color playerColor)
@@ -65,6 +67,16 @@ void Player::OnCollision()
     rr_RectRenderer.SetAlpha(75);
     i_lives--;
     b_isInvincible = true;
+}
+
+void Player::LoadTexture()
+{
+    t_Texture.loadFromFile("Resources/PLAYERCAR.png");
+}
+
+void Player::InitializeSprite()
+{
+    s_Sprite.setTexture(t_Texture);
 }
 
 //Returns the amount of lives the player has
