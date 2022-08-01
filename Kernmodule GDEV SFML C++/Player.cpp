@@ -1,81 +1,88 @@
-#include "Player.h" 
 #include <SFML/Window.hpp>
 #include <iostream>
+#include "Player.h" 
 
-// Constructors //
 
+// Constructors
 Player::Player()
 {
-    lives = 3;
-    horizontalInput = 0;
-    invincabilityTimer = Timer(1.0f);
+    i_lives = 3;
+    i_horizontalInput = 0;
+    t_InvincibleTimer = Timer(1.0f);
 }
 
 Player::Player(Vector2 playerSize, sf::Color playerColor)
 {
-    lives = 3;
-    size = playerSize;
-    startPos = Vector2(500, 750);
-    position = startPos;
-    invincabilityTimer = Timer(1.0f);
+    i_lives = 3;
+    v2_Size = playerSize;
+    v2_StartPos = Vector2(500, 750);
+    v2_Position = v2_StartPos;
+    t_InvincibleTimer = Timer(1.0f);
 
-    collider = BoxCollider(size, position);
-    rectRenderer = RectRenderer((int)playerSize.x, (int)playerSize.y, playerColor);
-    physicsComponent = PhysicsComponent(.65f);
+    bc_Collider = BoxCollider(v2_Size, v2_Position);
+    rr_RectRenderer = RectRenderer((int)playerSize.f_x, (int)playerSize.f_y, playerColor);
+    pc_PhysicsComponent = PhysicsComponent(.65f);
 }
 
 Player& Player::operator=(const Player& player)
 {
     Character::operator=(player);
-    lives = player.lives;
-    collider = player.collider;
-    rectRenderer = player.rectRenderer;
+    i_lives = player.i_lives;
+    bc_Collider = player.bc_Collider;
+    rr_RectRenderer = player.rr_RectRenderer;
 
     return *this;
 }
 
-void Player::onUpdate(sf::RenderWindow& window) {
-    horizontalInput = getInputHorizontal();
-    physicsComponent.addForce(Vector2(3 * horizontalInput, 0));
-    Character::onUpdate(window);
-
-    rectRenderer.SetShapePosition(position);
-    if (isInvincable) tickInvincabilityTimer();
-
-    draw(window);
-}
-
-void Player::draw(sf::RenderWindow& window)
+void Player::OnUpdate(sf::RenderWindow& window) 
 {
-    rectRenderer.drawShape(window);
+    i_horizontalInput = GetPlayerInput();
+    pc_PhysicsComponent.AddForce(Vector2(3 * i_horizontalInput, 0));
+    Character::OnUpdate(window);
+
+    rr_RectRenderer.SetShapePosition(v2_Position);
+    if (b_isInvincible)
+    {
+        TickInvincabilityTimer();
+    }
+
+    Draw(window);
 }
 
-void Player::onCollision()
+void Player::Draw(sf::RenderWindow& window)
 {
-    if (isInvincable) return;
-
-    // Set alpha lower for a few seconds
-    rectRenderer.setAlpha(100);
-    lives--;
-    isInvincable = true;
+    rr_RectRenderer.DrawShape(window);
 }
 
-int Player::getLives()
+void Player::OnCollision()
 {
-    return lives;
+    if (b_isInvincible) 
+    {        
+        return;
+    }
+
+    //Set the alpha lower for a few seconds so the player knows their invincible, some visual feedback
+    rr_RectRenderer.SetAlpha(75);
+    i_lives--;
+    b_isInvincible = true;
 }
 
-int Player::getInputHorizontal()
+//Returns the amount of lives the player has
+int Player::GetLives()
+{
+    return i_lives;
+}
+
+//Does the player input
+int Player::GetPlayerInput()
 {
     int horizontal = 0;
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)
-        || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
         horizontal = -1;
     }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)
-        || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
     {
         horizontal = 1;
     }
@@ -83,12 +90,15 @@ int Player::getInputHorizontal()
     return horizontal;
 }
 
-void Player::tickInvincabilityTimer()
+//Enables and disables the Invincible effect
+void Player::TickInvincabilityTimer()
 {
-    invincabilityTimer.tick();
-    if (invincabilityTimer.getTimeLeft() < 0) {
-        isInvincable = false;
-        rectRenderer.setAlpha(255);
-        invincabilityTimer.reset();
+    t_InvincibleTimer.Tick();
+
+    if (t_InvincibleTimer.GetTimeLeft() < 0) 
+    {
+        b_isInvincible = false;
+        rr_RectRenderer.SetAlpha(255);
+        t_InvincibleTimer.Reset();
     }
 }

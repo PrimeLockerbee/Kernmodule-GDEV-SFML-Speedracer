@@ -6,17 +6,16 @@
 
 class EnemyManager
 {
-public:
-	std::vector<Enemy> enemies;
-	int maxEnemies = 5;
+	public:
+		std::vector<Enemy> enemies;
+		int maxEnemies = 7;
 
-	EnemyManager();
-	EnemyManager(int maxEnemies);
-	void SpawnEnemy(Vector2 windowSize);
-	void RespawnEnemy(Enemy& enemy, Vector2 windowSize);
-	void onUpdate(sf::RenderWindow& window, ScoreManager& scoreManager, Player& player);
-
-private:
-	Vector2 getRandomEnemySpawnPos(Vector2 windowSize);
-
+		EnemyManager();
+		EnemyManager(int maxEnemies);
+		void SpawnEnemy(Vector2 windowSize);
+		void RespawnEnemy(Enemy& enemy, Vector2 windowSize);
+		void OnUpdate(sf::RenderWindow& window, ScoreManager& scoreManager, Player& player);
+	
+	private:
+		Vector2 GetRandomEnemySpawnPos(Vector2 windowSize);
 };

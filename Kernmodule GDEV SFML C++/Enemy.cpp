@@ -1,83 +1,95 @@
-#include "Enemy.h"
 #include <iostream>
+#include "Enemy.h"
 
-Enemy::Enemy(Vector2 size, sf::Color enemyColor, Vector2 startPos)
+//The enemy itself
+Enemy::Enemy(Vector2 size, sf::Color enemyColor, Vector2 v2_StartPos)
 {
-	this->size = size;
-	position = startPos;
+	this->v2_Size = size;
+	v2_Position = v2_StartPos;
 
-	isAccelerating = true;
-	acceleratingTimer = Timer(Math::randomRange(1.0f, 1.5f));
-	brakingTimer = Timer(.50f);
-	downwardForce = Vector2(0, Math::randomRange(2.5f, 3.5f));
+	b_IsAccelerating = true;
+	t_AcceleratingTimer = Timer(Math::RandomRange(1.0f, 1.5f));
+	t_BrakingTimer = Timer(.50f);
+	v2_DownwardForce = Vector2(0, Math::RandomRange(2.5f, 3.5f));
 
-	collider = BoxCollider(size, position);
-	rectRenderer = RectRenderer(size.x, size.y, enemyColor);
-	physicsComponent = PhysicsComponent(Math::randomRange(10, 15));
+	bc_Collider = BoxCollider(size, v2_Position);
+	rr_RectRenderer = RectRenderer(size.f_x, size.f_y, enemyColor);
+	pc_PhysicsComponent = PhysicsComponent(Math::RandomRange(10, 15));
 }
 
-void Enemy::onUpdate(sf::RenderWindow& window)
+void Enemy::OnUpdate(sf::RenderWindow& window)
 {
-	tickTimers();
-	if (isAccelerating)
+	TickTimers();
+	if (b_IsAccelerating)
 	{
-		physicsComponent.addForce(downwardForce);
+		pc_PhysicsComponent.AddForce(v2_DownwardForce);
 	}
-	Character::onUpdate(window);
-	rectRenderer.SetShapePosition(position);
+	Character::OnUpdate(window);
+	rr_RectRenderer.SetShapePosition(v2_Position);
 
-
-	draw(window);
+	Draw(window);
 }
 
-bool Enemy::isOutOfScreen(sf::RenderWindow& window)
+//Returns true if the enemy is outsde the windowheight
+bool Enemy::IsOutOfScreen(sf::RenderWindow& window)
 {
 	float windowHeight = window.getSize().y;
-	if (position.y > windowHeight)
+	if (v2_Position.f_y > windowHeight)
 	{
 		return true;
 	}
-	else {
+	else 
+	{
 		return false;
 	}
 }
 
-void Enemy::draw(sf::RenderWindow& window)
+//Draws the enemy
+void Enemy::Draw(sf::RenderWindow& window)
 {
-	rectRenderer.drawShape(window);
+	rr_RectRenderer.DrawShape(window);
 }
 
-void Enemy::tickTimers()
+//Switch between accelerating and braking
+void Enemy::TickTimers()
 {
-	if (isAccelerating) {
-		acceleratingTimer.tick();
-		if (acceleratingTimer.getTimeLeft() <= 0) {
-			switchToBraking();
+	if (b_IsAccelerating) 
+	{
+		t_AcceleratingTimer.Tick();
+
+		if (t_AcceleratingTimer.GetTimeLeft() <= 0) 
+		{
+			BrakingSwitch();
 		}
 	}
-	else {
-		brakingTimer.tick();
-		if (brakingTimer.getTimeLeft() <= 0) {
-			switchToAccelerating();
+	else 
+	{
+		t_BrakingTimer.Tick();
+
+		if (t_BrakingTimer.GetTimeLeft() <= 0) 
+		{
+			AccelerationSwitch();
 		}
 	}
 }
 
-void Enemy::switchToAccelerating()
+//Switches to accelerating 
+void Enemy::AccelerationSwitch()
 {
-	// Give the enemy a new downforce an accelerating Timer to randomize its movement
-	downwardForce = Vector2(0, Math::randomRange(2.5f, 3.5f));
-	acceleratingTimer = Timer(Math::randomRange(1.0f, 1.5f));
+	v2_DownwardForce = Vector2(0, Math::RandomRange(2.5f, 3.5f));
+	t_AcceleratingTimer = Timer(Math::RandomRange(1.0f, 1.5f));
 
-	brakingTimer.reset();
-	isAccelerating = true;
+	t_BrakingTimer.Reset();
+	b_IsAccelerating = true;
 }
 
-void Enemy::switchToBraking()
+//Switches to braking
+void Enemy::BrakingSwitch()
 {
-	acceleratingTimer.reset();
-	isAccelerating = false;
+	t_AcceleratingTimer.Reset();
+	b_IsAccelerating = false;
 
-	Vector2 sidewaysForce = Vector2(75 * Math::getRandomSign(), 0);
-	physicsComponent.addForce(sidewaysForce);		// Add a sideways force for 1 frame
+	Vector2 sidewaysForce = Vector2(70 * Math::RandomGetSign(), 0);
+
+	pc_PhysicsComponent.AddForce(sidewaysForce);
 }

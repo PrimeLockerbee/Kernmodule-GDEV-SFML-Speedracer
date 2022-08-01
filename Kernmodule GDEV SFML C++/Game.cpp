@@ -2,138 +2,149 @@
 
 Game::Game()
 {
-	createWindow();
-	startGame();
+	CreateWindow();
+	StartGame();
 }
 
 Game::~Game()
 {
-	delete window;
+	delete rw_Window;
 }
 
-// Private Methods //
-void Game::createWindow()
+//Private Methods
+void Game::CreateWindow()
 {
-	windowSize = Vector2(1000, 900);
-	window = new sf::RenderWindow(sf::VideoMode(windowSize.x, windowSize.y), "Avoid the cubes");
-	window->setFramerateLimit(60);
+	v2_WindowSize = Vector2(1000, 900);
+	rw_Window = new sf::RenderWindow(sf::VideoMode(v2_WindowSize.f_x, v2_WindowSize.f_y), "Avoid the blocks and get a score as high as possible");
+	rw_Window->setFramerateLimit(60);
 }
 
-void Game::startGame()
+//Starts the game
+void Game::StartGame()
 {
-	hasEnded = false;
-	difficulty = 1;
-	restartTimer = Timer(restartGameTime);
+	b_HasEnded = false;
+	i_difficulty = 1;
+	t_RestartTimer = Timer(cf_restartGameTime);
 
-	player = Player(Vector2(35.0f, 50.0f), sf::Color::Green);
-	enemyManager = EnemyManager(3);
-	scoreManager = ScoreManager();
-	// UIManager uses default constructor and doesn't need to be replaced when restarting game.
+	p_Player = Player(Vector2(40.0f, 60.0f), sf::Color::Cyan);
+	em_EnemyManager = EnemyManager(4);
+	sm_ScoreManager = ScoreManager();
 }
 
-void Game::endGame()
+//Ends the game
+void Game::EndGame()
 {
-	hasEnded = true;
-	window->clear();
+	b_HasEnded = true;
+	rw_Window->clear();
 
-	drawGameOverText();
+	DrawGameOverText();
 }
 
-void Game::pollEvents()
+void Game::PollEvents()
 {
 	int horizontalInput = 0;
 	sf::Event event;
-	while (window->pollEvent(event))
+	while (rw_Window->pollEvent(event))
 	{
 		if (event.type == sf::Event::Closed)
-			window->close();
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-			window->close();
+		{
+			rw_Window->close();
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) 
+		{
+			rw_Window->close();
 		}
 	}
 }
 
-void Game::drawGameOverText()
+void Game::DrawGameOverText()
 {
-	uiManager.drawGameOverScreen(*window, scoreManager.score);
+	um_UIManager.DrawGameOverScreen(*rw_Window, sm_ScoreManager.i_score);
 }
 
-// Public Methods //
-void Game::onUpdate()
+//Public Methods
+void Game::OnUpdate()
 {
-	pollEvents();
+	PollEvents();
 
-	if (!hasEnded)
+	if (!b_HasEnded)
 	{
-		window->clear();
+		rw_Window->clear();
 
-		player.onUpdate(*window);
-		enemyManager.onUpdate(*window, scoreManager, player);
-		uiManager.onUpdate(*window, player.getLives(), scoreManager.score);
-		// I wanted to trigger this function in the scoreManager whenever increaseScore was called.
-		// I don't know how to efficiently call upon the Game class function, referencing the game object was very messy.
-		checkDifficultyIncrease();
-		checkPlayerLives();
+		p_Player.OnUpdate(*rw_Window);
+		em_EnemyManager.OnUpdate(*rw_Window, sm_ScoreManager, p_Player);
+		um_UIManager.OnUpdate(*rw_Window, p_Player.GetLives(), sm_ScoreManager.i_score);
 
-		window->display();
+		CheckDifficultyIncrease();
+		CheckPlayerLives();
+
+		rw_Window->display();
 	}
 	else
 	{
-		restartTimer.tick();
-		if (restartTimer.getTimeLeft() <= 0) {
-			startGame();
+		t_RestartTimer.Tick();
+		if (t_RestartTimer.GetTimeLeft() <= 0) {
+			StartGame();
 		}
 	}
 }
 
-bool Game::isRunning()
+bool Game::IsRunning()
 {
-	return window->isOpen();
+	return rw_Window->isOpen();
 }
 
-void Game::checkDifficultyIncrease() {
-
+//Increases the difficulty based on the score
+void Game::CheckDifficultyIncrease() 
+{
 	int difficulty = 1;
-	int score = scoreManager.score;
+	int score = sm_ScoreManager.i_score;
 
-	if (score < 20) {
+	if (score < 20) 
+	{
 		difficulty = 1;
 	}
-	else if (score < 50) {
+	else if (score < 50) 
+	{
 		difficulty = 2;
 	}
-	else if (score < 100) {
+	else if (score < 100) 
+	{
 		difficulty = 3;
 	}
-	else {
-		// After a certain point, increase the difficulty every 150 points
-		// After a score of 7500 the difficulty finally stops increasing
-		for (int i = 1; i <= 50; i++)
+	else 
+	{
+		//Stops increasing the difficulty after a certain point
+		for (int i = 1; i <= 25; i++)
 		{
-			if (score < 150 * i) {
+			if (score < 150 * i) 
+			{
 				difficulty = 3 + i;
 				break;
 			}
 		}
 	}
-	setDifficulty(difficulty);
+
+	SetDifficulty(difficulty);
 }
 
-void Game::checkPlayerLives()
+//Checks if the player i_lives are 0
+void Game::CheckPlayerLives()
 {
-	if (player.getLives() <= 0) {
-		endGame();
+	if (p_Player.GetLives() <= 0) 
+	{
+		EndGame();
 	}
 }
 
-void Game::setDifficulty(int difficulty)
+void Game::SetDifficulty(int difficulty)
 {
-	this->difficulty = difficulty;
-	enemyManager.maxEnemies = difficulty + 2;
+	this->i_difficulty = difficulty;
+	em_EnemyManager.maxEnemies = difficulty + 2;
 }
 
-bool Game::getHasEnded()
+bool Game::GetHasEnded()
 {
-	return hasEnded;
+	return b_HasEnded;
 }
 

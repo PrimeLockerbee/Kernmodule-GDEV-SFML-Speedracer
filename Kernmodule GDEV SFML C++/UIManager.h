@@ -4,18 +4,18 @@
 
 class UIManager
 {
-public:
-	UIManager();
-	void onUpdate(sf::RenderWindow& window, int playerLives, int score);
-	void drawGameOverScreen(sf::RenderWindow& window, int score);
+	public:
+		UIManager();
+		void OnUpdate(sf::RenderWindow& window, int playerLives, int score);
+		void DrawGameOverScreen(sf::RenderWindow& window, int score);
+			
+	private:
+		sf::Font f_Font;
+		sf::Text t_ScoreText;
+		sf::Text t_GameOverText;
+		sf::Text t_PlayerLivesText;
 
-private:
-	sf::Font font;
-	sf::Text scoreText;
-	sf::Text gameOverText;
-	sf::Text playerLivesText;
-
-	void loadFont();
-	void initializeTexts();
+		void LoadFont();
+		void InitializeTexts();
 };
 

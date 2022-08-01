@@ -5,10 +5,10 @@
 class ScoreManager
 {
 public:
-	int score;
+	int i_score;
 
 	ScoreManager();
 	ScoreManager& operator=(const ScoreManager& scoreManager);
-	void increaseScore(int value);
+	void IncreaseScore(int value);
 };
 

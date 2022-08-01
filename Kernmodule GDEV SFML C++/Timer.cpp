@@ -2,35 +2,35 @@
 
 Timer::Timer()
 {
-	duration = 1;
-	timeLeft = duration;
+	f_duration = 1;
+	f_timeLeft = f_duration;
 }
 
 Timer::Timer(float duration)
 {
-	this->duration = duration;
-	reset();
+	this->f_duration = duration;
+	Reset();
 }
 
 Timer& Timer::operator=(const Timer& timer)
 {
-	duration = timer.duration;
-	timeLeft = timer.timeLeft;
+	f_duration = timer.f_duration;
+	f_timeLeft = timer.f_timeLeft;
 
 	return *this;
 }
 
-void Timer::reset()
+void Timer::Reset()
 {
-	timeLeft = duration;
+	f_timeLeft = f_duration;
 }
 
-void Timer::tick()
+void Timer::Tick()
 {
-	timeLeft -= Time::deltaTime;
+	f_timeLeft -= Time::deltaTime;
 }
 
-float Timer::getTimeLeft()
+float Timer::GetTimeLeft()
 {
-	return timeLeft;
+	return f_timeLeft;
 }

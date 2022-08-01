@@ -1,32 +1,31 @@
 #pragma once
 
+#include <SFML/Graphics.hpp>
 #include "Vector2.h"
 #include "PhysicsComponent.h"
 #include "ShapeRenderer.h"
 #include "RectRenderer.h"
-#include <SFML/Graphics.hpp>
 #include "Math.h"
 #include "BoxCollider.h"
 
 class Character
 {
-public:
-	// Variables
-	Vector2 size;
-	Vector2 position;
-	BoxCollider collider;
+	public:
+		//Variables
+		Vector2 v2_Size;
+		Vector2 v2_Position;
+		BoxCollider bc_Collider;
 
-	// Methods
-	Character();
-	Character& operator=(const Character& character);
-	void onUpdate(sf::RenderWindow& window);
+		//Methods
+		Character();
+		Character& operator=(const Character& character);
+		void OnUpdate(sf::RenderWindow& window);
 
-protected:
-	Vector2 startPos;
-	PhysicsComponent physicsComponent;
+	protected:
+		Vector2 v2_StartPos;
+		PhysicsComponent pc_PhysicsComponent;
 
-	// Private Methods //
-	Vector2 calculateNewPosition();
-	void onSideBorderCollision();
+		//Private Methods
+		Vector2 CalculateNewPosition();
 };
 

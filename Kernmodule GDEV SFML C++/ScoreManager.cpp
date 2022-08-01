@@ -2,19 +2,19 @@
 
 ScoreManager::ScoreManager()
 {
-	score = 0;
+	i_score = 0;
 }
 
 ScoreManager& ScoreManager::operator=(const ScoreManager& scoreManager)
 {
-	score = scoreManager.score;
+	i_score = scoreManager.i_score;
 
 	return *this;
 }
 
-void ScoreManager::increaseScore(int value)
+void ScoreManager::IncreaseScore(int value)
 {
-	score += value;
+	i_score += value;
 }
 
 

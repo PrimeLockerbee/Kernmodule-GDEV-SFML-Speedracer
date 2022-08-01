@@ -1,11 +1,11 @@
 #include "Time.h"
 
 float Time::deltaTime = 0.0f;
-sf::Clock Time::clock = sf::Clock();
+sf::Clock Time::c_clock = sf::Clock();
 
-float Time::calculateDeltaTime()
+float Time::CalculateDeltaTime()
 {
-	deltaTime = clock.restart().asSeconds();
+	deltaTime = c_clock.restart().asSeconds();
 	return deltaTime;
 }
 

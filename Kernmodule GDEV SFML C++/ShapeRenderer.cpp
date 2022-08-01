@@ -2,7 +2,7 @@
 
 void ShapeRenderer::SetShapePosition(Vector2 pos)
 {
-	shapePosition = pos;
+	v2_ShapePosition = pos;
 }
 
 

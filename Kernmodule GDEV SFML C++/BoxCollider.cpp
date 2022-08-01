@@ -1,77 +1,69 @@
 #include "BoxCollider.h"
 
-// Constructors //
-
+//Box collider coordinates
 BoxCollider::BoxCollider()
 {
-	topY = 0;
-	bottomY = 0;
-	leftX = 0;
-	rightX = 0;
+	f_topY = 0;
+	f_bottomY = 0;
+	f_leftX = 0;
+	f_rightX = 0;
 }
 
+//Size and position of the box collider
 BoxCollider::BoxCollider(Vector2 size, Vector2 pos)
 {
-	this->size = size;
-	this->position = pos;
+	this->v2_Size = size;
+	this->v2_Position = pos;
 }
 
 BoxCollider& BoxCollider::operator=(const BoxCollider& boxCollider) {
-	size = boxCollider.size;
-	position = boxCollider.position;
+	v2_Size = boxCollider.v2_Size;
+	v2_Position = boxCollider.v2_Position;
 
-	return *this;
+	return * this;
 }
 
-// Public Methods //
-
-bool BoxCollider::isCollidingWith(BoxCollider other)
+void BoxCollider::UpdatePosition(Vector2 newPos)
 {
-	calculateCorners();
-	other.calculateCorners();
+	v2_Position = newPos;
+}
 
-	// Check collision in Y first, then X.
-	if (this->topY < other.bottomY && this->bottomY > other.topY
-		&& this->leftX < other.rightX && this->rightX > other.leftX)
+//Checks if the box collider collides with anything
+bool BoxCollider::IsCollidingWith(BoxCollider other)
+{
+	CalculateCorners();
+	other.CalculateCorners();
+
+	if (this->f_topY < other.f_bottomY && this->f_bottomY > other.f_topY && this->f_leftX < other.f_rightX && this->f_rightX > other.f_leftX)
 	{
 		return true;
 	}
 	return false;
 }
 
-// Currently unused: replaced with clamping.
-bool BoxCollider::isCollidingWithSideBorders(sf::RenderWindow& window)
+//Calculates the corners of the box colliders
+void BoxCollider::CalculateCorners()
+{
+	f_topY = v2_Position.f_y;
+	f_bottomY = v2_Position.f_y + v2_Size.f_y;
+	f_leftX = v2_Position.f_x;
+	f_rightX = v2_Position.f_x + v2_Size.f_x;
+}
+
+//Checks if the box collider has passed outside of the window
+bool BoxCollider::HasPassedBottomBorder(sf::RenderWindow& window)
 {
 	sf::Vector2u windowSizeSFML = window.getSize();
 	Vector2 windowSize = Vector2(windowSizeSFML.x, windowSizeSFML.y);
 
-	calculateCorners();
-	if (leftX < 0 || rightX > windowSize.x) return true;
+	CalculateCorners();
+	if (f_topY > windowSize.f_y)
+	{
+		return true;
+	}
 	return false;
 }
 
-bool BoxCollider::hasPassedBottomBorder(sf::RenderWindow& window)
-{
-	sf::Vector2u windowSizeSFML = window.getSize();
-	Vector2 windowSize = Vector2(windowSizeSFML.x, windowSizeSFML.y);
-
-	calculateCorners();
-	if (topY > windowSize.y) return true;
-	return false;
-}
-
-void BoxCollider::updatePosition(Vector2 newPos)
-{
-	position = newPos;
-}
-
-void BoxCollider::calculateCorners()
-{
-	topY = position.y;
-	bottomY = position.y + size.y;
-	leftX = position.x;
-	rightX = position.x + size.x;
-}
 
 
 

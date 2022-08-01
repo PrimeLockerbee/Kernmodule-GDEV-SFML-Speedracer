@@ -3,11 +3,11 @@
 
 class Time
 {
-public:
-	static float deltaTime;
-	static float calculateDeltaTime();
-
-private:
-	static sf::Clock clock;
+	public:
+		static float deltaTime;
+		static float CalculateDeltaTime();
+	
+	private:
+		static sf::Clock c_clock;
 };
 

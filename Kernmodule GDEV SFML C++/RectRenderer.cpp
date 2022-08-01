@@ -2,28 +2,28 @@
 
 RectRenderer::RectRenderer()
 {
-	width = 100;
-	height = 100;
+	f_width = 100;
+	f_height = 100;
 }
 
 RectRenderer::RectRenderer(float rectWidth, float rectHeight, sf::Color shapeColor)
 {
-	width = rectWidth;
-	height = rectHeight;
-	this->shapeColor = shapeColor;
+	f_width = rectWidth;
+	f_height = rectHeight;
+	this->c_ShapeColor = shapeColor;
 	Vector2 sizeVector = Vector2(rectWidth, rectHeight);
-	shape.setSize(sizeVector.ToSFMLVector2f());
-	shape.setFillColor(shapeColor);
+	rs_shape.setSize(sizeVector.ToSFMLVector2f());
+	rs_shape.setFillColor(shapeColor);
 }
 
-void RectRenderer::drawShape(sf::RenderWindow& window)
+void RectRenderer::DrawShape(sf::RenderWindow& window)
 {
-	shape.setPosition(shapePosition.ToSFMLVector2f());
-	window.draw(shape);
+	rs_shape.setPosition(v2_ShapePosition.ToSFMLVector2f());
+	window.draw(rs_shape);
 }
 
-void RectRenderer::setAlpha(float alpha)
+void RectRenderer::SetAlpha(float alpha)
 {
-	shapeColor.a = alpha;
-	shape.setFillColor(shapeColor);
+	c_ShapeColor.a = alpha;
+	rs_shape.setFillColor(c_ShapeColor);
 }

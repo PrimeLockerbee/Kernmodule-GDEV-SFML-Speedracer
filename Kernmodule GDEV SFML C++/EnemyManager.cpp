@@ -1,7 +1,8 @@
-#include "EnemyManager.h"
 #include <iostream>
+#include "EnemyManager.h"
 
-EnemyManager::EnemyManager() {
+EnemyManager::EnemyManager() 
+{
 	maxEnemies = 0;
 }
 
@@ -10,50 +11,54 @@ EnemyManager::EnemyManager(int maxEnemies)
 	this->maxEnemies = maxEnemies;
 }
 
+//Spawns the enemy
 void EnemyManager::SpawnEnemy(Vector2 windowSize)
 {
-	Vector2 randomPos = getRandomEnemySpawnPos(windowSize);
+	Vector2 randomPos = GetRandomEnemySpawnPos(windowSize);
 
 	Enemy enemy = Enemy(Vector2(100.0f, 100.0f), sf::Color::Red, randomPos);
 	enemies.push_back(enemy);
 }
 
+//Respawns the enemy
 void EnemyManager::RespawnEnemy(Enemy& enemy, Vector2 windowSize)
 {
-	enemy.position = getRandomEnemySpawnPos(windowSize);
+	enemy.v2_Position = GetRandomEnemySpawnPos(windowSize);
 }
 
-void EnemyManager::onUpdate(sf::RenderWindow& window, ScoreManager& scoreManager, Player& player)
+void EnemyManager::OnUpdate(sf::RenderWindow& window, ScoreManager& scoreManager, Player& player)
 {
 	sf::Vector2u windowSizeSFML = window.getSize();
 	Vector2 windowSize = Vector2(windowSizeSFML.x, windowSizeSFML.y);
 
-	// Update each enemy
 	for (Enemy& enemy : enemies)
 	{
-		// Check Bottom Border Collision
-		if (enemy.collider.hasPassedBottomBorder(window))
+		//Adds 1 to the score and respawns the enemy
+		if (enemy.bc_Collider.HasPassedBottomBorder(window))
 		{
-			scoreManager.increaseScore(1);
+			scoreManager.IncreaseScore(1);
 			RespawnEnemy(enemy, windowSize);
 		}
 
-		enemy.onUpdate(window);
+		enemy.OnUpdate(window);
 
-		// Check collision with Player
-		if (enemy.collider.isCollidingWith(player.collider)) {
-			player.onCollision();
+		//Checks if the enemy collides with the player
+		if (enemy.bc_Collider.IsCollidingWith(player.bc_Collider))
+		{
+			player.OnCollision();
 		}
 	}
 
-	// Spawn a new enemy if there is capacity
-	if (enemies.capacity() < maxEnemies) {
+	//Spawns an enemy if the max hasn't been reached
+	if (enemies.capacity() < maxEnemies) 
+	{
 		SpawnEnemy(windowSize);
 	}
 }
 
-Vector2 EnemyManager::getRandomEnemySpawnPos(Vector2 windowSize)
+//Gets a random spawn position on the x-axis on y = 0
+Vector2 EnemyManager::GetRandomEnemySpawnPos(Vector2 windowSize)
 {
-	float randomX = Math::randomRange(0, windowSize.x - 100);
+	float randomX = Math::RandomRange(0, windowSize.f_x - 100);
 	return Vector2(randomX, 0);
 }

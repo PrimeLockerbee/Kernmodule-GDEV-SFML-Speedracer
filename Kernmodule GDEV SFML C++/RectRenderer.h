@@ -3,16 +3,16 @@
 
 class RectRenderer : public ShapeRenderer
 {
-public:
-	float width;
-	float height;
+	public:
+		float f_width;
+		float f_height;
 
-	RectRenderer();
-	RectRenderer(float rectWidth, float rectHeight, sf::Color shapeColor);
-	void drawShape(sf::RenderWindow& window);
-	void setAlpha(float alpha);
-
-private:
-	sf::RectangleShape shape;
+		RectRenderer();
+		RectRenderer(float rectWidth, float rectHeight, sf::Color shapeColor);
+		void DrawShape(sf::RenderWindow& window);
+		void SetAlpha(float alpha);
+	
+	private:
+		sf::RectangleShape rs_shape;
 };
 

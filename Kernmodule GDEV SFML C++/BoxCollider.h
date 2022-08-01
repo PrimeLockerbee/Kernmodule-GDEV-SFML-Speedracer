@@ -1,30 +1,29 @@
 #pragma once
-
 #include "Vector2.h"
 
 class BoxCollider
 {
-public:
-	// Constructors //
-	BoxCollider();
-	BoxCollider(Vector2 size, Vector2 pos);
-	BoxCollider& operator=(const BoxCollider& boxCollider);
+	public:
 
-	// Public Methods //
-	bool isCollidingWith(BoxCollider collider);
-	bool isCollidingWithSideBorders(sf::RenderWindow& window);
-	bool hasPassedBottomBorder(sf::RenderWindow& window);
-	void updatePosition(Vector2 newPos);
-	void calculateCorners();
+		//Constructors
+		BoxCollider();
+		BoxCollider(Vector2 size, Vector2 pos);
+		BoxCollider& operator=(const BoxCollider& boxCollider);
 
-private:
-	// Private Variables //
-	Vector2 size;
-	Vector2 position;
+		//Public Methods
+		bool IsCollidingWith(BoxCollider collider);
+		void UpdatePosition(Vector2 newPos);
+		void CalculateCorners();
+		bool HasPassedBottomBorder(sf::RenderWindow& window);
 
-	float bottomY;
-	float topY;
-	float leftX;
-	float rightX;
+	private:
+		//Private Variables
+		Vector2 v2_Size;
+		Vector2 v2_Position;
+
+		float f_bottomY;
+		float f_topY;
+		float f_leftX;
+		float f_rightX;
 };
 

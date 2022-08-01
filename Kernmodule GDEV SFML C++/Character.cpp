@@ -1,38 +1,42 @@
-#include "Character.h"
 #include <IOStream>
+#include "Character.h"
+
 using namespace std;
 
 Character::Character()
 {
-    collider = BoxCollider();
-    physicsComponent = PhysicsComponent(1);
-    startPos = Vector2();
-    position = startPos;
+    bc_Collider = BoxCollider();
+    pc_PhysicsComponent = PhysicsComponent(1);
+    v2_StartPos = Vector2();
+    v2_Position = v2_StartPos;
 }
 
 Character& Character::operator=(const Character& character)
 {
-    size = character.size;
-    startPos = character.startPos;
-    position = character.position;
-    physicsComponent = character.physicsComponent;
+    v2_Size = character.v2_Size;
+    v2_StartPos = character.v2_StartPos;
+    v2_Position = character.v2_Position;
+    pc_PhysicsComponent = character.pc_PhysicsComponent;
 
     return *this;
 }
 
-void Character::onUpdate(sf::RenderWindow& window)
+//Update for characters
+void Character::OnUpdate(sf::RenderWindow& window)
 {
     sf::Vector2u windowSizeSFML = window.getSize();
     Vector2 windowSize = Vector2(windowSizeSFML.x, windowSizeSFML.y);
 
-    physicsComponent.onUpdate();
-    position = calculateNewPosition();
-    position.x = Math::Clamp(position.x, 0, windowSize.x - size.x);
-    collider.updatePosition(position);
+    pc_PhysicsComponent.OnUpdate();
+    v2_Position = CalculateNewPosition();
+    v2_Position.f_x = Math::Clamp(v2_Position.f_x, 0, windowSize.f_x - v2_Size.f_x);
+    bc_Collider.UpdatePosition(v2_Position);
 }
 
-Vector2 Character::calculateNewPosition() {
-    return position + physicsComponent.velocity;
+//Calculates the new position
+Vector2 Character::CalculateNewPosition() 
+{
+    return v2_Position + pc_PhysicsComponent.v2_Velocity;
 }
 
 

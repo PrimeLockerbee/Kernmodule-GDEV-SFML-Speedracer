@@ -4,23 +4,23 @@
 
 class Enemy : public Character
 {
-public:
-	Enemy(Vector2 size, sf::Color playerColor, Vector2 startPos);
+	public:
+		Enemy(Vector2 size, sf::Color playerColor, Vector2 v2_StartPos);
 
-	virtual void onUpdate(sf::RenderWindow& window);
-	bool isOutOfScreen(sf::RenderWindow& window);
-	virtual void draw(sf::RenderWindow& window);
+		virtual void OnUpdate(sf::RenderWindow& window);
+		bool IsOutOfScreen(sf::RenderWindow& window);
+		virtual void Draw(sf::RenderWindow& window);
 
-private:
-	RectRenderer rectRenderer;
-	Vector2 downwardForce;
-	Timer acceleratingTimer;
-	Timer brakingTimer;
-	bool isAccelerating;
-
-	void tickTimers();
-	void switchToAccelerating();
-	void switchToBraking();
+	private:
+		RectRenderer rr_RectRenderer;
+		Vector2 v2_DownwardForce;
+		Timer t_AcceleratingTimer;
+		Timer t_BrakingTimer;
+		bool b_IsAccelerating;
+	
+		void TickTimers();
+		void AccelerationSwitch();
+		void BrakingSwitch();
 };
 
 

@@ -3,56 +3,56 @@
 
 UIManager::UIManager()
 {
-	loadFont();
-	initializeTexts();
+	LoadFont();
+	InitializeTexts();
 }
 
-void UIManager::onUpdate(sf::RenderWindow& window, int playerLives, int score)
+void UIManager::OnUpdate(sf::RenderWindow& window, int playerLives, int score)
 {
-	scoreText.setString(std::to_string(score));
-	window.draw(scoreText);
+	t_ScoreText.setString(std::to_string(score));
+	window.draw(t_ScoreText);
 
-	playerLivesText.setString("Lives: " + std::to_string(playerLives));
-	window.draw(playerLivesText);
+	t_PlayerLivesText.setString("i_lives: " + std::to_string(playerLives));
+	window.draw(t_PlayerLivesText);
 }
 
-void UIManager::drawGameOverScreen(sf::RenderWindow& window, int score)
+void UIManager::DrawGameOverScreen(sf::RenderWindow& window, int score)
 {
 	sf::Vector2u windowSizeSFML = window.getSize();
 	Vector2 windowSize = Vector2(windowSizeSFML.x, windowSizeSFML.y);
 
-	gameOverText.setString("Game over! \nScore: " + std::to_string(score));
+	t_GameOverText.setString("Game over! \nScore: " + std::to_string(score));
 
 	// Set the text to the middle of the screen
-	float textWidth = gameOverText.getLocalBounds().width;
-	float textHeight = gameOverText.getLocalBounds().height;
-	float textX = (windowSize.x - textWidth) / 2;
-	float textY = (windowSize.y - textHeight) / 2;
-	gameOverText.setPosition(textX, textY);
+	float textWidth = t_GameOverText.getLocalBounds().width;
+	float textHeight = t_GameOverText.getLocalBounds().height;
+	float textX = (windowSize.f_x - textWidth) / 2;
+	float textY = (windowSize.f_y - textHeight) / 2;
+	t_GameOverText.setPosition(textX, textY);
 
-	window.draw(gameOverText);
+	window.draw(t_GameOverText);
 }
 
-void UIManager::loadFont()
+void UIManager::LoadFont()
 {
-	font.loadFromFile("Resources/Roboto-Black.ttf");
+	f_Font.loadFromFile("Resources/Roboto-Black.ttf");
 }
 
-void UIManager::initializeTexts()
+void UIManager::InitializeTexts()
 {
 	// ScoreText
-	scoreText.setFont(font);
-	scoreText.setPosition(450.0f, 100.0f);
-	scoreText.setString("0");
-	scoreText.setCharacterSize(100);
-	scoreText.setStyle(sf::Text::Bold);
+	t_ScoreText.setFont(f_Font);
+	t_ScoreText.setPosition(450.0f, 100.0f);
+	t_ScoreText.setString("0");
+	t_ScoreText.setCharacterSize(100);
+	t_ScoreText.setStyle(sf::Text::Bold);
 
 	// Game Over Text
-	gameOverText.setFont(font);
-	gameOverText.setCharacterSize(50);
+	t_GameOverText.setFont(f_Font);
+	t_GameOverText.setCharacterSize(50);
 
-	playerLivesText.setFont(font);
-	playerLivesText.setCharacterSize(40);
-	playerLivesText.setPosition(10.0f, 10.0f);
-	playerLivesText.setString("Lives: ");
+	t_PlayerLivesText.setFont(f_Font);
+	t_PlayerLivesText.setCharacterSize(40);
+	t_PlayerLivesText.setPosition(10.0f, 10.0f);
+	t_PlayerLivesText.setString("i_lives: ");
 }
