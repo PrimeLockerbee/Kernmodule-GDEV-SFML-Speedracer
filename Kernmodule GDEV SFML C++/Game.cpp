@@ -1,3 +1,5 @@
+#include <SFML/Audio.hpp>
+
 #include "Game.h"
 
 Game::Game()
@@ -15,7 +17,7 @@ Game::~Game()
 void Game::CreateWindow()
 {
 	v2_WindowSize = Vector2(1000, 900);
-	rw_Window = new sf::RenderWindow(sf::VideoMode(v2_WindowSize.f_x, v2_WindowSize.f_y), "Avoid the blocks and get a score as high as possible");
+	rw_Window = new sf::RenderWindow(sf::VideoMode(v2_WindowSize.f_x, v2_WindowSize.f_y), "Car Chaser");
 	rw_Window->setFramerateLimit(60);
 }
 
@@ -26,7 +28,7 @@ void Game::StartGame()
 	i_difficulty = 1;
 	t_RestartTimer = Timer(cf_restartGameTime);
 
-	p_Player = Player(Vector2(40.0f, 60.0f), sf::Color::Cyan);
+	p_Player = Player(Vector2(40.0f, 60.0f), sf::Color::Magenta);
 	em_EnemyManager = EnemyManager(4);
 	sm_ScoreManager = ScoreManager();
 }
@@ -128,7 +130,7 @@ void Game::CheckDifficultyIncrease()
 	SetDifficulty(difficulty);
 }
 
-//Checks if the player i_lives are 0
+//Checks if the player lives are 0
 void Game::CheckPlayerLives()
 {
 	if (p_Player.GetLives() <= 0) 

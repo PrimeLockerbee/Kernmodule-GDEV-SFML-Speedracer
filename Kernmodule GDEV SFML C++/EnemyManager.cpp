@@ -16,7 +16,7 @@ void EnemyManager::SpawnEnemy(Vector2 windowSize)
 {
 	Vector2 randomPos = GetRandomEnemySpawnPos(windowSize);
 
-	Enemy enemy = Enemy(Vector2(100.0f, 100.0f), sf::Color::Red, randomPos);
+	Enemy enemy = Enemy(Vector2(50.0f, 100.0f), sf::Color::Yellow, randomPos);
 	enemies.push_back(enemy);
 }
 

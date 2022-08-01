@@ -12,7 +12,7 @@ void UIManager::OnUpdate(sf::RenderWindow& window, int playerLives, int score)
 	t_ScoreText.setString(std::to_string(score));
 	window.draw(t_ScoreText);
 
-	t_PlayerLivesText.setString("i_lives: " + std::to_string(playerLives));
+	t_PlayerLivesText.setString("Lives: " + std::to_string(playerLives));
 	window.draw(t_PlayerLivesText);
 }
 
@@ -21,7 +21,7 @@ void UIManager::DrawGameOverScreen(sf::RenderWindow& window, int score)
 	sf::Vector2u windowSizeSFML = window.getSize();
 	Vector2 windowSize = Vector2(windowSizeSFML.x, windowSizeSFML.y);
 
-	t_GameOverText.setString("Game over! \nScore: " + std::to_string(score));
+	t_GameOverText.setString("You have lost! \nScore: " + std::to_string(score));
 
 	// Set the text to the middle of the screen
 	float textWidth = t_GameOverText.getLocalBounds().width;
@@ -54,5 +54,5 @@ void UIManager::InitializeTexts()
 	t_PlayerLivesText.setFont(f_Font);
 	t_PlayerLivesText.setCharacterSize(40);
 	t_PlayerLivesText.setPosition(10.0f, 10.0f);
-	t_PlayerLivesText.setString("i_lives: ");
+	t_PlayerLivesText.setString("Lives: ");
 }
