@@ -1,4 +1,15 @@
-﻿  Character.cpp
+﻿  BoxCollider.cpp
+D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\BoxCollider.cpp(57,63): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\BoxCollider.cpp(57,45): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+  Character.cpp
 D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\Character.cpp(28,66): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
@@ -42,6 +53,32 @@ D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedrac
 D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\Player.cpp(25,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\Player.cpp(25,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\Player.cpp(42,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  RectangleRenderer.cpp
+D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\RectangleRenderer.cpp(27,19): warning C4244: '=': conversion from 'float' to 'sf::Uint8', possible loss of data
+  ShapeRenderer.cpp
+  UIManager.cpp
+D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\UIManager.cpp(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\UIManager.cpp(23,63): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\UIManager.cpp(23,45): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+  Vector2.cpp
+D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\Vector2.cpp(65,27): warning C4244: 'argument': conversion from 'float' to 'T', possible loss of data
+          with
+          [
+              T=int
+          ]
+D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\Vector2.cpp(65,22): warning C4244: 'argument': conversion from 'float' to 'T', possible loss of data
+          with
+          [
+              T=int
+          ]
   main.cpp
 D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\main.cpp(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\Enemy.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
