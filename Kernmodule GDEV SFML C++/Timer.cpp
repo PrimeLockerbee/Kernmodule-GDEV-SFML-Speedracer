@@ -20,16 +20,19 @@ Timer& Timer::operator=(const Timer& timer)
 	return *this;
 }
 
+//Resets the timer
 void Timer::Reset()
 {
 	f_timeLeft = f_duration;
 }
 
+//Timer
 void Timer::Tick()
 {
 	f_timeLeft -= Time::deltaTime;
 }
 
+//Returns the time left
 float Timer::GetTimeLeft()
 {
 	return f_timeLeft;

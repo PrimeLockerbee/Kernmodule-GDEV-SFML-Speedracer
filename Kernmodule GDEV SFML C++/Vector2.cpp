@@ -1,13 +1,14 @@
 #include <iostream>
 #include "Vector2.h"
 
-
+//Vector2 X and Y
 Vector2::Vector2() 
 {
 	f_x = 0;
 	f_y = 0;
 }
 
+//Vector2 X and Y
 Vector2::Vector2(float x, float y)
 {
 	this->f_x = x;
@@ -49,8 +50,7 @@ Vector2 Vector2::operator/(float scalar)
 	}
 }
 
-// Public Methods //
-
+//Public Methods
 sf::Vector2f Vector2::ToSFMLVector2f()
 {
 	return sf::Vector2f(f_x, f_y);

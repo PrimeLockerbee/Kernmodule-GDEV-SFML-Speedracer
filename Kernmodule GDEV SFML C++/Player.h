@@ -21,7 +21,7 @@ class Player : public Character
 	
 	private:
 		//Private Variables
-		RectRenderer rr_RectRenderer;
+		RectangleRenderer rr_RectRenderer;
 		int i_horizontalInput;
 		int i_lives;
 	

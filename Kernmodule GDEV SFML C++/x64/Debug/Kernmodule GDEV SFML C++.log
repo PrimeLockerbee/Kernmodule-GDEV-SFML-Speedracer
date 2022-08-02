@@ -1,28 +1,13 @@
-﻿  EnemyManager.cpp
-D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\Enemy.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\Enemy.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\EnemyManager.cpp(32,63): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+﻿  UIManager.cpp
+D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\UIManager.cpp(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\UIManager.cpp(23,63): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=unsigned int
           ]
-D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\EnemyManager.cpp(32,45): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\UIManager.cpp(23,45): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=unsigned int
           ]
-  Game.cpp
-D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\Enemy.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\Enemy.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\Game.cpp(20,81): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\Game.cpp(20,62): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-  Player.cpp
-D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\Player.cpp(25,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\Player.cpp(25,51): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\Player.cpp(42,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  main.cpp
-D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\main.cpp(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\Enemy.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\Enemy.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Generating Code...
   Kernmodule GDEV SFML C++.vcxproj -> D:\School\Kernmodule c++\Eindopdracht\EINDOPDRACHT\Kernmodule-GDEV-SFML-Speedracer\Kernmodule GDEV SFML C++\x64\Debug\Kernmodule GDEV SFML C++.exe

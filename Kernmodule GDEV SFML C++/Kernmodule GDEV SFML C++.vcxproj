@@ -154,7 +154,7 @@
     <ClCompile Include="Math.cpp" />
     <ClCompile Include="PhysicsComponent.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="RectRenderer.cpp" />
+    <ClCompile Include="RectangleRenderer.cpp" />
     <ClCompile Include="ScoreManager.cpp" />
     <ClCompile Include="ShapeRenderer.cpp" />
     <ClCompile Include="Time.cpp" />
@@ -171,7 +171,7 @@
     <ClInclude Include="Math.h" />
     <ClInclude Include="PhysicsComponent.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="RectRenderer.h" />
+    <ClInclude Include="RectangleRenderer.h" />
     <ClInclude Include="ScoreManager.h" />
     <ClInclude Include="ShapeRenderer.h" />
     <ClInclude Include="Time.h" />

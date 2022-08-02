@@ -85,7 +85,8 @@ void Game::OnUpdate()
 	else
 	{
 		t_RestartTimer.Tick();
-		if (t_RestartTimer.GetTimeLeft() <= 0) {
+		if (t_RestartTimer.GetTimeLeft() <= 0) 
+		{
 			StartGame();
 		}
 	}
@@ -116,10 +117,10 @@ void Game::CheckDifficultyIncrease()
 	}
 	else 
 	{
-		//Stops increasing the difficulty after a certain point
+		//Stops increasing the difficulty after 2500 score
 		for (int i = 1; i <= 25; i++)
 		{
-			if (score < 150 * i) 
+			if (score < 100 * i) 
 			{
 				difficulty = 3 + i;
 				break;

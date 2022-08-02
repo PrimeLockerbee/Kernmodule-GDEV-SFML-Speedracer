@@ -4,7 +4,7 @@
 #include "Vector2.h"
 #include "PhysicsComponent.h"
 #include "ShapeRenderer.h"
-#include "RectRenderer.h"
+#include "RectangleRenderer.h"
 #include "Math.h"
 #include "BoxCollider.h"
 

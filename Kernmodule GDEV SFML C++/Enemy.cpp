@@ -13,7 +13,7 @@ Enemy::Enemy(Vector2 size, sf::Color enemyColor, Vector2 v2_StartPos)
 	v2_DownwardForce = Vector2(0, Math::RandomRange(2.5f, 3.5f));
 
 	bc_Collider = BoxCollider(size, v2_Position);
-	rr_RectRenderer = RectRenderer(size.f_x, size.f_y, enemyColor);
+	rr_RectRenderer = RectangleRenderer(size.f_x, size.f_y, enemyColor);
 	pc_PhysicsComponent = PhysicsComponent(Math::RandomRange(10, 15));
 }
 

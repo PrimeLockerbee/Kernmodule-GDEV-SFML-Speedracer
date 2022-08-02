@@ -22,7 +22,7 @@ Player::Player(Vector2 playerSize, sf::Color playerColor)
     t_InvincibleTimer = Timer(1.0f);
 
     bc_Collider = BoxCollider(v2_Size, v2_Position);
-    rr_RectRenderer = RectRenderer((int)playerSize.f_x, (int)playerSize.f_y, playerColor);
+    rr_RectRenderer = RectangleRenderer((int)playerSize.f_x, (int)playerSize.f_y, playerColor);
     pc_PhysicsComponent = PhysicsComponent(.65f);
 }
 

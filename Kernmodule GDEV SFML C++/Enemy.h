@@ -12,7 +12,7 @@ class Enemy : public Character
 		virtual void Draw(sf::RenderWindow& window);
 
 	private:
-		RectRenderer rr_RectRenderer;
+		RectangleRenderer rr_RectRenderer;
 		Vector2 v2_DownwardForce;
 		Timer t_AcceleratingTimer;
 		Timer t_BrakingTimer;
