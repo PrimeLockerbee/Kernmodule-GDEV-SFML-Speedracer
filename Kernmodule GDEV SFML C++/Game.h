@@ -32,7 +32,7 @@ class Game
 
 		bool b_HasEnded;
 		int i_difficulty;
-		const float cf_restartGameTime = 3.0f;
+		const float cf_restartGameTime = 7.0f;
 		Timer t_RestartTimer;
 	
 		Vector2 v2_WindowSize;

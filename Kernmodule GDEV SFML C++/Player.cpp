@@ -19,7 +19,7 @@ Player::Player(Vector2 playerSize, sf::Color playerColor)
     v2_Size = playerSize;
     v2_StartPos = Vector2(500, 750);
     v2_Position = v2_StartPos;
-    t_InvincibleTimer = Timer(1.0f);
+    t_InvincibleTimer = Timer(1.5f);
 
     bc_Collider = BoxCollider(v2_Size, v2_Position);
     rr_RectRenderer = RectangleRenderer((int)playerSize.f_x, (int)playerSize.f_y, playerColor);
@@ -45,7 +45,7 @@ void Player::OnUpdate(sf::RenderWindow& window)
     rr_RectRenderer.SetShapePosition(v2_Position);
     if (b_isInvincible)
     {
-        TickInvincabilityTimer();
+        TickInvincibilityTimer();
     }
 
     Draw(window);
@@ -103,7 +103,7 @@ int Player::GetPlayerInput()
 }
 
 //Enables and disables the Invincible effect
-void Player::TickInvincabilityTimer()
+void Player::TickInvincibilityTimer()
 {
     t_InvincibleTimer.Tick();
 

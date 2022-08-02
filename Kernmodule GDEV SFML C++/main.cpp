@@ -3,13 +3,13 @@
 
 int main()
 {
-    Game game = Game();
+    Game g_Game = Game();
 
-    while (game.IsRunning())
+    while (g_Game.IsRunning())
     {
-        //Updates the game
+        //Updates the game as long as it is running
         Time::CalculateDeltaTime();
-        game.OnUpdate();
+        g_Game.OnUpdate();
     }
 
     return 0;

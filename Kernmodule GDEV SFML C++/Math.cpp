@@ -1,18 +1,6 @@
 #include <random>
 #include "Math.h"
 
-float Math::Abs(float value)
-{
-    if (value >= 0)
-    {
-        return value;
-    }
-    else  
-    {
-        return -value;
-    }
-}
-
 //Restricts a number between two values
 float Math::Clamp(float value, float minValue, float maxValue)
 {

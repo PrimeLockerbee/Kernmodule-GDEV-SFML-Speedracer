@@ -33,7 +33,7 @@ class Player : public Character
 
 		//Private Methods
 		int GetPlayerInput();
-		void TickInvincabilityTimer();
+		void TickInvincibilityTimer();
 		void LoadTexture();
 		void InitializeSprite();
 };

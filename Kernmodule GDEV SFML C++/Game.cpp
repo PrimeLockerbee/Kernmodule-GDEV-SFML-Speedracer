@@ -17,7 +17,7 @@ Game::~Game()
 void Game::CreateWindow()
 {
 	v2_WindowSize = Vector2(1000, 900);
-	rw_Window = new sf::RenderWindow(sf::VideoMode(v2_WindowSize.f_x, v2_WindowSize.f_y), "Car Chaser");
+	rw_Window = new sf::RenderWindow(sf::VideoMode(v2_WindowSize.f_x, v2_WindowSize.f_y), "Car Dodger");
 	rw_Window->setFramerateLimit(60);
 }
 

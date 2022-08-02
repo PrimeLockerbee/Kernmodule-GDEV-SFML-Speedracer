@@ -3,7 +3,6 @@
 
 class PhysicsComponent
 {
-
 	public:
 		//Total force in directions x and y in newtons (N)
 		Vector2 v2_TotalForce;		
@@ -23,3 +22,6 @@ class PhysicsComponent
 		const float f_minVelocity = -20;
 		const float f_maxVelocity = 20;
 };
+
+
+

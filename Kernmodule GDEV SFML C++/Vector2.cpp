@@ -22,21 +22,25 @@ Vector2& Vector2::operator=(const Vector2& v)
 	return *this;
 }
 
+//Vector2 addition
 Vector2 Vector2::operator+(Vector2 otherVector)
 {
 	return Vector2(f_x + otherVector.f_x, f_y + otherVector.f_y);
 }
 
+//Vector2 substraction
 Vector2 Vector2::operator-(Vector2 otherVector)
 {
 	return Vector2(f_x - otherVector.f_x, f_y - otherVector.f_y);
 }
 
+//Vector2 multiplication
 Vector2 Vector2::operator*(float scalar)
 {
 	return Vector2(f_x * scalar, f_y * scalar);
 }
 
+//Vector2 dividation
 Vector2 Vector2::operator/(float scalar)
 {
 	if (scalar == 0)
